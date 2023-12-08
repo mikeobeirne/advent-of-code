@@ -88,15 +88,6 @@ var Day8_2023 = /** @class */ (function (_super) {
         }
         return lcm;
     };
-    Day8_2023.prototype.isFinished = function (curPlaces) {
-        for (var _i = 0, curPlaces_1 = curPlaces; _i < curPlaces_1.length; _i++) {
-            var p = curPlaces_1[_i];
-            if (p.charAt(2) !== "Z") {
-                return false;
-            }
-        }
-        return true;
-    };
     return Day8_2023;
 }(solution_1.Solution));
 // utils.runSolution(new Day8_2023(), utils.ProblemParts.One);

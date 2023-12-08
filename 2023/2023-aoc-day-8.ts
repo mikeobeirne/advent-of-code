@@ -76,16 +76,6 @@ class Day8_2023 extends Solution {
         }
         return lcm;
     }
-    
-
-    isFinished(curPlaces: string[]): boolean {
-        for (let p of curPlaces) {
-            if (p.charAt(2) !== "Z") {
-                return false;
-            }
-        }
-        return true;
-    }
 }
 
 // utils.runSolution(new Day8_2023(), utils.ProblemParts.One);
