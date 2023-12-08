@@ -63,7 +63,7 @@ var Day3_2023 = /** @class */ (function (_super) {
                 }
             }
             if (curNum !== null) {
-                parts = parts.concat({ 'value': curNum, 'leftBound': curLeft, 'rightBound': j - 1, 'row': i });
+                parts = parts.concat({ 'value': curNum, 'leftBound': curLeft, 'rightBound': input.length - 1, 'row': i });
             }
         }
         return parts;

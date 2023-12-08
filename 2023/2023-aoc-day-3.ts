@@ -60,7 +60,7 @@ class Day3_2023 extends Solution {
             }
 
             if (curNum !== null) {
-                parts = parts.concat({ 'value': curNum, 'leftBound': curLeft, 'rightBound': j-1, 'row': i });
+                parts = parts.concat({ 'value': curNum, 'leftBound': curLeft, 'rightBound': input.length -1, 'row': i });
             }
         }
 
