@@ -51,29 +51,34 @@ var Day4_2023 = /** @class */ (function (_super) {
         return totalAnswer;
     };
     Day4_2023.prototype.partTwo = function (input) {
-        var totalAnswer = 0;
-        for (var _i = 0, input_2 = input; _i < input_2.length; _i++) {
-            var card = input_2[_i];
-            // Cut off 'Card __:'
-            card = card.split(":")[1].trim();
+        var cardCounts = (new Array(input.length)).fill(1);
+        for (var i = 0; i < input.length; i++) {
+            var card = input[i].split(":")[1].trim();
             var winners = new Set(card.split("|")[0].trim().split(" "));
             var myNums = card.split("|")[1].trim().split(" ").filter(function (s) { return s !== ''; });
-            var power = 0;
-            for (var _a = 0, myNums_2 = myNums; _a < myNums_2.length; _a++) {
-                var n = myNums_2[_a];
+            var numMatches = 0;
+            for (var _i = 0, myNums_2 = myNums; _i < myNums_2.length; _i++) {
+                var n = myNums_2[_i];
                 if (winners.has(n)) {
-                    power++;
+                    numMatches++;
                 }
             }
-            var ans = 0;
-            if (power !== 0) {
-                ans = Math.pow(2, power - 1);
+            for (var j = i + 1; j < cardCounts.length; j++) {
+                if (numMatches > 0) {
+                    cardCounts[j] += cardCounts[i];
+                    numMatches--;
+                }
+                else {
+                    break;
+                }
             }
-            totalAnswer += ans;
         }
-        return totalAnswer;
+        console.log(cardCounts);
+        var finalAns = cardCounts.reduce(function (curTotal, val) { return curTotal + val; }, 0);
+        return finalAns;
     };
     return Day4_2023;
 }(solution_1.Solution));
-utils.runSolution(new Day4_2023(), utils.ProblemParts.One);
+// utils.runSolution(new Day4_2023(), utils.ProblemParts.One);
+utils.runSolution(new Day4_2023(), utils.ProblemParts.Two);
 //# sourceMappingURL=2023-aoc-day-4.js.map
