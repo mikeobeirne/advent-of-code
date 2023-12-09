@@ -1,6 +1,5 @@
-import * as utils from '../utils/aoc-utils';
-import { Solution } from '../utils/solution';
-
+import * as utils from "../utils/aoc-utils";
+import { Solution } from "../utils/solution";
 
 class Day1_2023 extends Solution {
   DAY = 1;
@@ -65,20 +64,20 @@ class Day1_2023 extends Solution {
       }
       return firstDigit * 10 + lastDigit;
     });
-    return (answer.reduce((partialSum, a) => partialSum + a, 0)).toString();
+    return answer.reduce((partialSum, a) => partialSum + a, 0).toString();
   }
 
   spelledVal = (line: string) => {
     let lookup = {
-      "one": 1,
-      "two": 2,
-      "three": 3,
-      "four": 4,
-      "five": 5,
-      "six": 6,
-      "seven": 7,
-      "eight": 8,
-      "nine": 9,
+      one: 1,
+      two: 2,
+      three: 3,
+      four: 4,
+      five: 5,
+      six: 6,
+      seven: 7,
+      eight: 8,
+      nine: 9,
     };
     for (let key in lookup) {
       if (line.startsWith(key)) {
@@ -86,7 +85,7 @@ class Day1_2023 extends Solution {
       }
     }
     return null;
-  }
+  };
 }
 
 utils.runSolution(new Day1_2023(), utils.ProblemParts.One);

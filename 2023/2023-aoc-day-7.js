@@ -43,18 +43,18 @@ var Day7_2023 = /** @class */ (function (_super) {
         for (var i = 0; i < input.length; i++) {
             var hand = this.parseHand(input[i].split(" ")[0]);
             var bid = parseInt(input[i].split(" ")[1]);
-            hands = hands.concat({ "hand": hand, "bid": bid });
+            hands = hands.concat({ hand: hand, bid: bid });
         }
         hands = hands.sort(function (a, b) { return _this.compareHands(a.hand, b.hand); });
         var ans = 0;
         for (var i = 0; i < hands.length; i++) {
             var mult = i + 1;
-            ans += (hands[i].bid * mult);
+            ans += hands[i].bid * mult;
         }
         return ans;
     };
     Day7_2023.prototype.parseHand = function (hand) {
-        var vals = (new Array(15)).fill(0, 0, 15);
+        var vals = new Array(15).fill(0, 0, 15);
         for (var i = 0; i < hand.length; i++) {
             var value = this.cardToVal(hand.charAt(i));
             vals[value] = vals[value] + 1;
@@ -62,13 +62,13 @@ var Day7_2023 = /** @class */ (function (_super) {
         // 5 of a kind
         for (var i = 2; i <= 14; i++) {
             if (vals[i] === 5) {
-                return { "type": HandType.FIVE, "high": i, "cards": hand };
+                return { type: HandType.FIVE, high: i, cards: hand };
             }
         }
         // 4 of a kind
         for (var i = 2; i <= 14; i++) {
             if (vals[i] === 4) {
-                return { "type": HandType.FOUR, "high": i, "cards": hand };
+                return { type: HandType.FOUR, high: i, cards: hand };
             }
         }
         // Full House
@@ -79,11 +79,11 @@ var Day7_2023 = /** @class */ (function (_super) {
                         continue;
                     }
                     if (vals[j] === 2) {
-                        return { "type": HandType.FULL_HOUSE, "three": i, "two": j, "cards": hand };
+                        return { type: HandType.FULL_HOUSE, three: i, two: j, cards: hand };
                     }
                 }
                 // If we got here, we must just be 3 of a kind
-                return { "type": HandType.THREE, "three": i, "cards": hand };
+                return { type: HandType.THREE, three: i, cards: hand };
             }
         }
         // Two Pair
@@ -94,14 +94,19 @@ var Day7_2023 = /** @class */ (function (_super) {
                         continue;
                     }
                     if (vals[j] === 2) {
-                        return { "type": HandType.TWO_PAIR, "high_two": j, "low_two": i, "cards": hand };
+                        return {
+                            type: HandType.TWO_PAIR,
+                            high_two: j,
+                            low_two: i,
+                            cards: hand,
+                        };
                     }
                 }
                 // If we got here, just a single pair
-                return { "type": HandType.ONE_PAIR, "high_two": i, "cards": hand };
+                return { type: HandType.ONE_PAIR, high_two: i, cards: hand };
             }
         }
-        return { "type": HandType.HIGH_CARD, "cards": hand };
+        return { type: HandType.HIGH_CARD, cards: hand };
     };
     Day7_2023.prototype.compareHands = function (h1, h2) {
         // If one hand is outright better, just return
@@ -169,7 +174,7 @@ var Day7_2023 = /** @class */ (function (_super) {
         for (var i = 0; i < input.length; i++) {
             var hand = this.parseHand2(input[i].split(" ")[0]);
             var bid = parseInt(input[i].split(" ")[1]);
-            hands = hands.concat({ "hand": hand, "bid": bid });
+            hands = hands.concat({ hand: hand, bid: bid });
         }
         hands = hands.sort(function (a, b) { return _this.compareHands(a.hand, b.hand); });
         var ans = 0;
@@ -178,12 +183,12 @@ var Day7_2023 = /** @class */ (function (_super) {
                 console.log(hands[i].hand);
             }
             var mult = i + 1;
-            ans += (hands[i].bid * mult);
+            ans += hands[i].bid * mult;
         }
         return ans;
     };
     Day7_2023.prototype.parseHand2 = function (hand) {
-        var vals = (new Array(15)).fill(0, 0, 15);
+        var vals = new Array(15).fill(0, 0, 15);
         for (var i = 0; i < hand.length; i++) {
             var value = this.cardToVal(hand.charAt(i));
             vals[value] = vals[value] + 1;
@@ -191,13 +196,13 @@ var Day7_2023 = /** @class */ (function (_super) {
         // 5 of a kind
         for (var i = 2; i <= 14; i++) {
             if (vals[0] + vals[i] === 5) {
-                return { "type": HandType.FIVE, "high": i, "cards": hand };
+                return { type: HandType.FIVE, high: i, cards: hand };
             }
         }
         // 4 of a kind
         for (var i = 2; i <= 14; i++) {
             if (vals[0] + vals[i] === 4) {
-                return { "type": HandType.FOUR, "high": i, "cards": hand };
+                return { type: HandType.FOUR, high: i, cards: hand };
             }
         }
         // Full House
@@ -209,11 +214,11 @@ var Day7_2023 = /** @class */ (function (_super) {
                     }
                     var numJokersLeft = Math.max(0, vals[0] - (3 - vals[i]));
                     if (numJokersLeft + vals[j] >= 2) {
-                        return { "type": HandType.FULL_HOUSE, "three": i, "two": j, "cards": hand };
+                        return { type: HandType.FULL_HOUSE, three: i, two: j, cards: hand };
                     }
                 }
                 // If we got here, we must just be 3 of a kind
-                return { "type": HandType.THREE, "three": i, "cards": hand };
+                return { type: HandType.THREE, three: i, cards: hand };
             }
         }
         // Two Pair
@@ -225,14 +230,19 @@ var Day7_2023 = /** @class */ (function (_super) {
                     }
                     var numJokersLeft = Math.max(0, vals[0] - (2 - vals[i]));
                     if (numJokersLeft + vals[j] === 2) {
-                        return { "type": HandType.TWO_PAIR, "high_two": j, "low_two": i, "cards": hand };
+                        return {
+                            type: HandType.TWO_PAIR,
+                            high_two: j,
+                            low_two: i,
+                            cards: hand,
+                        };
                     }
                 }
                 // If we got here, just a single pair
-                return { "type": HandType.ONE_PAIR, "high_two": i, "cards": hand };
+                return { type: HandType.ONE_PAIR, high_two: i, cards: hand };
             }
         }
-        return { "type": HandType.HIGH_CARD, "cards": hand };
+        return { type: HandType.HIGH_CARD, cards: hand };
     };
     return Day7_2023;
 }(solution_1.Solution));

@@ -34,7 +34,11 @@ var Day4_2023 = /** @class */ (function (_super) {
             // Cut off 'Card __:'
             card = card.split(":")[1].trim();
             var winners = new Set(card.split("|")[0].trim().split(" "));
-            var myNums = card.split("|")[1].trim().split(" ").filter(function (s) { return s !== ''; });
+            var myNums = card
+                .split("|")[1]
+                .trim()
+                .split(" ")
+                .filter(function (s) { return s !== ""; });
             var power = 0;
             for (var _a = 0, myNums_1 = myNums; _a < myNums_1.length; _a++) {
                 var n = myNums_1[_a];
@@ -51,11 +55,15 @@ var Day4_2023 = /** @class */ (function (_super) {
         return totalAnswer;
     };
     Day4_2023.prototype.partTwo = function (input) {
-        var cardCounts = (new Array(input.length)).fill(1);
+        var cardCounts = new Array(input.length).fill(1);
         for (var i = 0; i < input.length; i++) {
             var card = input[i].split(":")[1].trim();
             var winners = new Set(card.split("|")[0].trim().split(" "));
-            var myNums = card.split("|")[1].trim().split(" ").filter(function (s) { return s !== ''; });
+            var myNums = card
+                .split("|")[1]
+                .trim()
+                .split(" ")
+                .filter(function (s) { return s !== ""; });
             var numMatches = 0;
             for (var _i = 0, myNums_2 = myNums; _i < myNums_2.length; _i++) {
                 var n = myNums_2[_i];

@@ -31,9 +31,11 @@ var Day2_2023 = /** @class */ (function (_super) {
             var maxPossible = this.gameToMaximum(game);
             // console.log(game);
             // console.log(maxPossible);
-            if (maxPossible.red <= 12 && maxPossible.green <= 13 && maxPossible.blue <= 14) {
+            if (maxPossible.red <= 12 &&
+                maxPossible.green <= 13 &&
+                maxPossible.blue <= 14) {
                 // console.log("Possible");
-                ans += (Number.parseInt(idx) + 1);
+                ans += Number.parseInt(idx) + 1;
             }
             else {
                 // console.log("Not possible");
@@ -44,9 +46,9 @@ var Day2_2023 = /** @class */ (function (_super) {
     Day2_2023.prototype.gameToMaximum = function (game) {
         game = game.split(":")[1].trim(); // Chop off 'Game:'
         var maxPossible = {
-            "blue": 0,
-            "red": 0,
-            "green": 0,
+            blue: 0,
+            red: 0,
+            green: 0,
         };
         var rounds = game.split(";");
         // 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
@@ -62,9 +64,9 @@ var Day2_2023 = /** @class */ (function (_super) {
     // 1 blue, 2 green; ==> {"blue": 1, "green": 2, "red": 0}
     Day2_2023.prototype.roundToMaximum = function (round) {
         var max = {
-            "blue": 0,
-            "red": 0,
-            "green": 0,
+            blue: 0,
+            red: 0,
+            green: 0,
         };
         for (var _i = 0, _a = round.split(","); _i < _a.length; _i++) {
             var cube = _a[_i];

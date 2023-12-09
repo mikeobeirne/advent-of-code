@@ -61,9 +61,9 @@ var Day5_2023 = /** @class */ (function (_super) {
         for (var i = 1; i < mapData.length; i++) {
             var _a = mapData[i].split(" "), destStart = _a[0], sourceStart = _a[1], length_1 = _a[2];
             ranges = ranges.concat({
-                "destStart": parseInt(destStart),
-                "sourceStart": parseInt(sourceStart),
-                "length": parseInt(length_1)
+                destStart: parseInt(destStart),
+                sourceStart: parseInt(sourceStart),
+                length: parseInt(length_1),
             });
         }
         return {
@@ -74,8 +74,8 @@ var Day5_2023 = /** @class */ (function (_super) {
     };
     Day5_2023.prototype.getLocation = function (seedNum, maps) {
         var curLocation = seedNum;
-        var curType = 'seed';
-        while (curType !== 'location') {
+        var curType = "seed";
+        while (curType !== "location") {
             // console.log(curType + " " + curLocation);
             var mapToUse = maps.find(function (m) { return m.source === curType; });
             curType = mapToUse.dest;
@@ -115,7 +115,7 @@ var Day5_2023 = /** @class */ (function (_super) {
             for (var j = 0; j < seeds.length; j = j + 2) {
                 var rangeStart = seeds[j];
                 var rangeLength = seeds[j + 1];
-                if (seed >= rangeStart && seed <= (rangeStart + rangeLength)) {
+                if (seed >= rangeStart && seed <= rangeStart + rangeLength) {
                     console.log("Valid location " + location_1 + " " + seed);
                     return location_1;
                 }
@@ -125,8 +125,8 @@ var Day5_2023 = /** @class */ (function (_super) {
     };
     Day5_2023.prototype.getSeedFromLocation = function (locationNum, maps) {
         var curLocation = locationNum;
-        var curType = 'location';
-        while (curType !== 'seed') {
+        var curType = "location";
+        while (curType !== "seed") {
             // console.log(curType + " " + curLocation);
             var mapToUse = maps.find(function (m) { return m.dest === curType; });
             curType = mapToUse.source;

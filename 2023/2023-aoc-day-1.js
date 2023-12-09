@@ -24,15 +24,15 @@ var Day1_2023 = /** @class */ (function (_super) {
         _this.DAY = 1;
         _this.spelledVal = function (line) {
             var lookup = {
-                "one": 1,
-                "two": 2,
-                "three": 3,
-                "four": 4,
-                "five": 5,
-                "six": 6,
-                "seven": 7,
-                "eight": 8,
-                "nine": 9,
+                one: 1,
+                two: 2,
+                three: 3,
+                four: 4,
+                five: 5,
+                six: 6,
+                seven: 7,
+                eight: 8,
+                nine: 9,
             };
             for (var key in lookup) {
                 if (line.startsWith(key)) {
@@ -107,7 +107,7 @@ var Day1_2023 = /** @class */ (function (_super) {
             }
             return firstDigit * 10 + lastDigit;
         });
-        return (answer.reduce(function (partialSum, a) { return partialSum + a; }, 0)).toString();
+        return answer.reduce(function (partialSum, a) { return partialSum + a; }, 0).toString();
     };
     return Day1_2023;
 }(solution_1.Solution));

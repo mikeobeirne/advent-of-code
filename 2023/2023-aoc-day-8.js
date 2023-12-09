@@ -43,7 +43,7 @@ var Day8_2023 = /** @class */ (function (_super) {
             var _b = paths.split(","), leftPath = _b[0], rightPath = _b[1];
             leftPath = leftPath.split("(")[1].trim();
             rightPath = rightPath.split(")")[0].trim();
-            routes[start] = { "L": leftPath, "R": rightPath };
+            routes[start] = { L: leftPath, R: rightPath };
         }
         return routes;
     };

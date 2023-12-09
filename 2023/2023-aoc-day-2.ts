@@ -1,10 +1,10 @@
-import * as utils from '../utils/aoc-utils';
-import { Solution } from '../utils/solution';
+import * as utils from "../utils/aoc-utils";
+import { Solution } from "../utils/solution";
 
 type GameMax = {
-  "blue": number,
-  "red": number,
-  "green": number,
+  blue: number;
+  red: number;
+  green: number;
 };
 
 class Day2_2023 extends Solution {
@@ -17,9 +17,13 @@ class Day2_2023 extends Solution {
       let maxPossible = this.gameToMaximum(game);
       // console.log(game);
       // console.log(maxPossible);
-      if (maxPossible.red <= 12 && maxPossible.green <= 13 && maxPossible.blue <= 14) {
+      if (
+        maxPossible.red <= 12 &&
+        maxPossible.green <= 13 &&
+        maxPossible.blue <= 14
+      ) {
         // console.log("Possible");
-        ans += (Number.parseInt(idx) + 1);
+        ans += Number.parseInt(idx) + 1;
       } else {
         // console.log("Not possible");
       }
@@ -30,9 +34,9 @@ class Day2_2023 extends Solution {
   gameToMaximum(game: string): GameMax {
     game = game.split(":")[1].trim(); // Chop off 'Game:'
     let maxPossible = {
-      "blue": 0,
-      "red": 0,
-      "green": 0,
+      blue: 0,
+      red: 0,
+      green: 0,
     };
     let rounds = game.split(";");
     // 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
@@ -49,9 +53,9 @@ class Day2_2023 extends Solution {
   // 1 blue, 2 green; ==> {"blue": 1, "green": 2, "red": 0}
   roundToMaximum(round: string): GameMax {
     let max = {
-      "blue": 0,
-      "red": 0,
-      "green": 0,
+      blue: 0,
+      red: 0,
+      green: 0,
     };
     for (let cube of round.split(",")) {
       cube = cube.trim();
@@ -74,7 +78,6 @@ class Day2_2023 extends Solution {
     }
     return ans.toString();
   }
-
 }
 
 // utils.runSolution(new Day2_2023(), utils.ProblemParts.One);

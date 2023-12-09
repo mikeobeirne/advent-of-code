@@ -28,7 +28,13 @@ var Day6_2023 = /** @class */ (function (_super) {
         return _this;
     }
     Day6_2023.prototype.partOne = function (input) {
-        var parse = function (line) { return line.split(":")[1].split(" ").map(function (t) { return parseInt(t); }).filter(function (t) { return !Number.isNaN(t); }); };
+        var parse = function (line) {
+            return line
+                .split(":")[1]
+                .split(" ")
+                .map(function (t) { return parseInt(t); })
+                .filter(function (t) { return !Number.isNaN(t); });
+        };
         var times = parse(input[0]);
         var distances = parse(input[1]);
         var ans = 1;
@@ -47,7 +53,10 @@ var Day6_2023 = /** @class */ (function (_super) {
     };
     Day6_2023.prototype.partTwo = function (input) {
         var parse = function (line) {
-            var nums = line.split(":")[1].split(" ").filter(function (t) { return t !== ''; });
+            var nums = line
+                .split(":")[1]
+                .split(" ")
+                .filter(function (t) { return t !== ""; });
             var totalNum = parseInt(nums.join(""));
             return [totalNum];
         };

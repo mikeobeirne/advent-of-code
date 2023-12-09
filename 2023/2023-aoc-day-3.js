@@ -47,7 +47,12 @@ var Day3_2023 = /** @class */ (function (_super) {
                 // Are we terminating a part?
                 if (!isDigit) {
                     if (curNum !== null) {
-                        parts = parts.concat({ 'value': curNum, 'leftBound': curLeft, 'rightBound': j - 1, 'row': i });
+                        parts = parts.concat({
+                            value: curNum,
+                            leftBound: curLeft,
+                            rightBound: j - 1,
+                            row: i,
+                        });
                         curNum = null;
                         curLeft = null;
                     }
@@ -58,12 +63,17 @@ var Day3_2023 = /** @class */ (function (_super) {
                         curNum = parseInt(input[i].charAt(j));
                     }
                     else {
-                        curNum = (curNum * 10) + parseInt(input[i].charAt(j));
+                        curNum = curNum * 10 + parseInt(input[i].charAt(j));
                     }
                 }
             }
             if (curNum !== null) {
-                parts = parts.concat({ 'value': curNum, 'leftBound': curLeft, 'rightBound': input.length - 1, 'row': i });
+                parts = parts.concat({
+                    value: curNum,
+                    leftBound: curLeft,
+                    rightBound: input.length - 1,
+                    row: i,
+                });
             }
         }
         return parts;
@@ -87,7 +97,7 @@ var Day3_2023 = /** @class */ (function (_super) {
             return false;
         }
         var char = input[i].charAt(j);
-        if (char === '.') {
+        if (char === ".") {
             return false;
         }
         // we assume it's a symbol if it's not a number
@@ -99,7 +109,7 @@ var Day3_2023 = /** @class */ (function (_super) {
         var answer = 0;
         var _loop_1 = function (i) {
             var _loop_2 = function (j) {
-                if (input[i].charAt(j) === '*') {
+                if (input[i].charAt(j) === "*") {
                     var adjparts = parts.filter(function (p, index) {
                         var isAdjacent = _this.isPartAdjacent(i, j, p);
                         return isAdjacent;
