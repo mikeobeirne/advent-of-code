@@ -286,7 +286,7 @@ class Day10_2023 extends Solution {
 
     let queue = [{ row: startingRow, col: startingCol }];
     while (queue.length !== 0) {
-      let cur = queue.pop();
+      let cur: { row: number; col: number } = queue.pop();
       // We're on the edge, so we can escape!
       if (
         cur.row === 0 ||

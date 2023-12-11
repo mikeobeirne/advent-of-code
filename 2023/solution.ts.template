@@ -13,5 +13,8 @@ class Day0_2023 extends Solution {
 
 }
 
-utils.runSolution(new Day0_2023(), utils.ProblemParts.One);
-utils.runSolution(new Day0_2023(), utils.ProblemParts.Two);
+let sol = new Day0_2023();
+utils.runTest(sol, utils.ProblemParts.One);
+utils.run(sol, utils.ProblemParts.One);
+utils.runTest(sol, utils.ProblemParts.Two);
+utils.run(sol, utils.ProblemParts.Two);

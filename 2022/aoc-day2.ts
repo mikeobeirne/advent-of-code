@@ -1,11 +1,10 @@
-import { readFileSync } from 'fs';
+import { readFileSync } from "fs";
 
 const DAY = 2;
 const path = `aoc-${DAY}-input.txt`;
 
-let input = readFileSync(path, 'utf-8').toString().trim().split('\n');
+let input = readFileSync(path, "utf-8").toString().trim().split("\n");
 //input = ["A Y", "B X", "C Z"];
-
 
 const scoreValues = [1, 2, 3];
 
@@ -24,8 +23,9 @@ const WIN = 2;
 // C - Z (scissors)
 
 for (let i = 0; i < input.length; i++) {
-  let them = input[i].at(0).charCodeAt(0) - 'A'.charCodeAt(0);
-  let us = input[i].at(2).charCodeAt(0) - 'X'.charCodeAt(0);
+  let them = input[i].at(0).charCodeAt(0) - "A".charCodeAt(0);
+  let us = input[i].at(2).charCodeAt(0) - "X".charCodeAt(0);
+  let who = input[i].at(0);
 
   let score = scoreValues[us];
   if (them === us) {
@@ -52,15 +52,16 @@ console.log(totalScore);
 
 totalScore = 0;
 for (let i = 0; i < input.length; i++) {
-  let them = input[i].at(0).charCodeAt(0) - 'A'.charCodeAt(0);
-  let us = input[i].at(2).charCodeAt(0) - 'X'.charCodeAt(0);
+  let them = input[i].at(0).charCodeAt(0) - "A".charCodeAt(0);
+  let us = input[i].at(2).charCodeAt(0) - "X".charCodeAt(0);
 
   let score = 0;
   if (us === WIN) {
     score = 6 + scoreValues[(them + 1) % 3];
   } else if (us === LOSE) {
     score = scoreValues[(them - 1 + 3) % 3];
-  } else { // us === DRAW
+  } else {
+    // us === DRAW
     score = 3 + scoreValues[them];
   }
 
