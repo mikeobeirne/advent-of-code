@@ -1,4 +1,3 @@
-import { deflateSync } from "zlib";
 import * as utils from "../utils/aoc-utils";
 import { Solution } from "../utils/solution";
 
