@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES2019",
     "module": "CommonJS",
     "sourceMap": true,
-    "strictNullChecks": true,
+    "strict": true,
     "exactOptionalPropertyTypes": true,
-    "noImplicitAny": true,
-    "noPropertyAccessFromIndexSignature": true
+    "noPropertyAccessFromIndexSignature": true,
+    "noFallthroughCasesInSwitch": true
   }
 }
