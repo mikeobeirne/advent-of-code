@@ -19,7 +19,7 @@ const readInput = (path: string): string[] => {
 export function runTest(sol: Solution, part: ProblemParts): void {
   const testInputPath = join(
     __dirname,
-    `../2023/input/${sol.DAY}-part-${part}-test.in`
+    `../2023/input/${sol.DAY}-part-one-test.in`
   );
   const testInput = readInput(testInputPath);
   if (testInput.length === 0) {
@@ -34,7 +34,7 @@ export function runTest(sol: Solution, part: ProblemParts): void {
 }
 
 export function run(sol: Solution, part: ProblemParts): void {
-  const inputPath = join(__dirname, `../2023/input/${sol.DAY}-part-${part}.in`);
+  const inputPath = join(__dirname, `../2023/input/${sol.DAY}-part-one.in`);
 
   const input = readInput(inputPath);
   if (input.length === 0) {
