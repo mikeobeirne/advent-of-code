@@ -2,6 +2,11 @@ import { assert } from "console";
 import * as utils from "../utils/aoc-utils";
 import { Solution } from "../utils/solution";
 
+type NumPair = {
+  x: number;
+  y: number;
+};
+
 class Day13_2024 extends Solution {
   DAY = 13;
 
@@ -23,11 +28,7 @@ class Day13_2024 extends Solution {
     return ans;
   }
 
-  solve(
-    A: { x: number; y: number },
-    B: { x: number; y: number },
-    targets: { x: number; y: number }
-  ): number {
+  solve(A: NumPair, B: NumPair, targets: NumPair): number {
     // console.log(A);
     // console.log(B);
     // console.log(targets);
@@ -49,11 +50,7 @@ class Day13_2024 extends Solution {
     return minCost;
   }
 
-  solveFast(
-    A: { x: number; y: number },
-    B: { x: number; y: number },
-    targets: { x: number; y: number }
-  ): number {
+  solveFast(A: NumPair, B: NumPair, targets: NumPair): number {
     // Ax * i + Bx * j - targets.x = 0
     // Ay * i + By * j - targets.y = 0
     // Solve system of linear equations via cross multiplication
@@ -71,7 +68,7 @@ class Day13_2024 extends Solution {
     return 3 * i + j;
   }
 
-  parseButton(line: string): { x: number; y: number } {
+  parseButton(line: string): NumPair {
     const regex = /X\+(\d+), Y\+(\d+)/g;
     let results = regex.exec(line)!;
     return {
@@ -80,7 +77,7 @@ class Day13_2024 extends Solution {
     };
   }
 
-  parseTargets(line: string): { x: number; y: number } {
+  parseTargets(line: string): NumPair {
     const regex = /X\=(\d+), Y\=(\d+)/g;
     let results = regex.exec(line)!;
     return {
