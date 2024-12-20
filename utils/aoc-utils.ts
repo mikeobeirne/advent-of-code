@@ -58,7 +58,21 @@ export function runSolution(sol: Solution, part: ProblemParts): void {
 
 export function printArr(a: string[][] | number[][]): void {
   for (let i = 0; i < a.length; i++) {
-    let buf = a[i].join("");
+    let buf = "";
+    for (let j = 0; j < a[i].length; j++) {
+      // buf += a[i][j];
+      switch (a[i][j]) {
+        case 0:
+          buf += ".";
+          break;
+        case 1:
+          buf += "#";
+          break;
+        case 8:
+          buf += "O";
+          break;
+      }
+    }
     console.log(buf);
   }
 }
