@@ -60,19 +60,58 @@ export function printArr(a: string[][] | number[][]): void {
   for (let i = 0; i < a.length; i++) {
     let buf = "";
     for (let j = 0; j < a[i].length; j++) {
-      // buf += a[i][j];
-      switch (a[i][j]) {
-        case 0:
-          buf += ".";
-          break;
-        case 1:
-          buf += "#";
-          break;
-        case 8:
-          buf += "O";
-          break;
-      }
+      buf += a[i][j];
     }
     console.log(buf);
   }
+}
+
+export function parseInto2DString(input: string[]): string[][] {
+  let ans: string[][] = [];
+  for (let i = 0; i < input.length; i++) {
+    ans[i] = [];
+    for (let j = 0; j < input[0].length; j++) {
+      ans[i][j] = input[i].charAt(j);
+    }
+  }
+  return ans;
+}
+
+export function findInGrid(
+  input: any[][],
+  needle: any
+): { x: number; y: number } | null {
+  for (let i = 0; i < input.length; i++) {
+    for (let j = 0; j < input[0].length; j++) {
+      if (input[i][j] === needle) {
+        return { x: i, y: j };
+      }
+    }
+  }
+  return null;
+}
+
+export function isInBounds(input: any[][], i: number, j: number): boolean {
+  if (i < 0 || j < 0 || i >= input.length || j >= input[0].length) {
+    return false;
+  }
+  return true;
+}
+
+export function manhattanDistance(
+  x: number,
+  y: number,
+  i: number,
+  j: number
+): number {
+  return Math.abs(x - i) + Math.abs(y - j);
+}
+
+export function directionArray(): number[][] {
+  return [
+    [0, 1],
+    [0, -1],
+    [1, 0],
+    [-1, 0],
+  ];
 }
